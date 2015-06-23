@@ -1,0 +1,31 @@
+{
+  "name": "iojs-api",
+  "version": "1.0.0",
+  "description": "Example of API REST written in IO.js, using ECMAScript6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/carlosazaustre/iojs-api.git"
+  },
+  "keywords": [
+    "io.js",
+    "iojs",
+    "node",
+    "api",
+    "rest",
+    "es6",
+    "ecmascript6"
+  ],
+  "author": "Carlos Azaustre @carlosazaustre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosazaustre/iojs-api/issues"
+  },
+  "homepage": "https://github.com/carlosazaustre/iojs-api#readme",
+  "dependencies": {
+    "course": "0.0.1"
+  }
+}
