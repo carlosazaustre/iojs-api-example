@@ -28,6 +28,17 @@ $ nvm install v2.3.1
 $ nvm use v2.3.1
 ```
 
+### Install Babel transpiler in order to use the most recient features of ES6
+```
+$ npm install -g Babel
+```
+
+## Execution
+
+```
+$ babel-node index.js
+```
+
 ## LICENSE
 
 The MIT License (MIT)
