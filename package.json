@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/carlosazaustre/iojs-api#readme",
   "dependencies": {
+    "body": "^5.1.0",
     "course": "0.0.1"
   }
 }
