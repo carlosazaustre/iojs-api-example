@@ -10,6 +10,6 @@ const employeeSchema = new mongoose.Schema({
   phone     : { type: String }
 })
 
-let employeeModel = mongoose.model('Employee', employeeSchema)
+let Employee = mongoose.model('Employee', employeeSchema)
 
-export default employeeModel
+export default Employee

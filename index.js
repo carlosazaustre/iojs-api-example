@@ -4,10 +4,11 @@ import http from 'http'
 import mongoose from 'mongoose'
 import router from './router'
 
-const server = http.createServer()
-const port = process.env.PORT || 3000
+const server    = http.createServer()
+const port      = process.env.PORT || 3000
+const database  = process.env.MONGO_URL || 'mongodb://localhost/directory'
 
-mongoose.connect('mongodb://localhost/directory', onDBConnect)
+mongoose.connect(database, onDBConnect)
 server.on('request', router)
 server.on('listening', onListening)
 
