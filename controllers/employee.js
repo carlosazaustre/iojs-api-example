@@ -2,6 +2,7 @@
 
 import jsonBody from 'body/json'
 import Employee from '../models/employee'
+import { fail } from '../helpers/handler'
 
 class EmployeeController {
 
@@ -23,7 +24,7 @@ class EmployeeController {
   // -- GET /employees/:id -----------------------------------------------------
 
   get (req, res) {
-    var employeeId = this.employeeId
+    let employeeId = this.employeeId
 
     Employee.findById(employeeId, (err, employee) => {
       if (err) return fail(err, res)
@@ -43,24 +44,47 @@ class EmployeeController {
     jsonBody(req, res, (err, body) => {
       if (err) return fail(err, res)
 
-      var employee = new Employee({
-        fullName    : body.fullName,
-        picture     : body.picture,
-        department  : body.department,
-        title       : body.title,
-        phone       : body.phone
-      })
-
-      employee.save((err) => {
-        if (err) return fail(err, res)
-
-        console.log(`POST /employees \n ${employee}`)
+      Employee.create(body, (err, data) => {
         res.end(JSON.stringify({
           message: 'OK',
-          employee: employee
+          employee: data
         }))
       })
+    })
+  }
 
+  // -- DELETE /employees/:employeeId ------------------------------------------
+
+  remove (req, res, next) {
+    let employeeId = this.employeeId
+    if (!employeeId) return next()
+
+    Employee.findOneAndRemove({ _id: employeeId }, (err) => {
+      if (err) return fail(err, res)
+
+      res.end(JSON.stringify({
+        message: 'Employee Deleted'
+      }))
+    })
+  }
+
+  // -- PUT /employees/:employeeId ---------------------------------------------
+
+  update (req, res) {
+    let employeeId = this.employeeId
+    if (!employeeId) return next()
+
+    jsonBody(req, res, (err, body) => {
+      if (err) return fail(err, res)
+      let updatedEmployee = body
+
+      Employee.findOneAndUpdate({ _id: employeeId }, updatedEmployee, (err) => {
+        if (err) return fail(err, res)
+
+        res.end(JSON.stringify({
+          message: 'Employee Updated'
+        }))
+      })
     })
   }
 }
