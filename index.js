@@ -2,7 +2,7 @@
 
 import http from 'http'
 import mongoose from 'mongoose'
-import router from './router'
+import router from './lib/router'
 
 const server    = http.createServer()
 const port      = process.env.PORT || 3000
