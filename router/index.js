@@ -18,9 +18,9 @@ router.get('/', function (req, res) {
   res.end('Welcome to Employee API REST')
 })
 
-router.get('/employees', employeeCtrl.getAll)
-
-router.post('/employees', employeeCtrl.save)
+router.get('/employees',             employeeCtrl.getAll)
+router.get('/employees/:employeeId', employeeCtrl.get)
+router.post('/employees',            employeeCtrl.save)
 
 function onRequest (req, res) {
   router(req, res, function (err) {
