@@ -2,10 +2,10 @@
 
 import path from 'path'
 import course from 'course'
-import jsonBody from 'body/json'
-import Employee from '../models/employee'
+import EmployeeController from '../controllers/employee'
 
 const router = course()
+const employeeCtrl = new EmployeeController()
 
 router.all(function (req, res, next) {
   res.statusCode = 200
@@ -18,39 +18,9 @@ router.get('/', function (req, res) {
   res.end('Welcome to Employee API REST')
 })
 
-router.get('/employees', function (req, res) {
-  Employee.find(function(err, employees) {
-    console.log('GET /employees')
-    res.end(JSON.stringify({
-      message: 'OK',
-      employees: employees
-    }))
-  })
-})
+router.get('/employees', employeeCtrl.getAll)
 
-router.post('/employees', function (req, res) {
-  jsonBody(req, res, function(err, body) {
-    if (err) return fail(err, res)
-
-    var employee = new Employee({
-      fullName    : body.fullName,
-      picture     : body.picture,
-      department  : body.department,
-      title       : body.title,
-      phone       : body.phone
-    })
-
-    employee.save(function(err) {
-      if (err) console.log('ERROR on created Employee')
-
-      console.log(`POST /employees \n ${empoyee}`)
-      res.end(JSON.stringify({
-        message: 'OK',
-        employee: employee
-      }))
-    })
-  })
-})
+router.post('/employees', employeeCtrl.save)
 
 function onRequest (req, res) {
   router(req, res, function (err) {
