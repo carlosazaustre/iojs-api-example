@@ -23,3 +23,5 @@ function onDBConnect (err, res) {
 function onListening () {
   console.log(`Server listening on http://localhost:${port}`)
 }
+
+export default server
