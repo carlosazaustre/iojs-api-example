@@ -6,7 +6,7 @@ import router from './lib/router'
 
 const server    = http.createServer()
 const port      = process.env.PORT || 3000
-const database  = process.env.MONGO_URL || 'mongodb://localhost/directory'
+const database  = process.env.MONGOLAB_URI || 'mongodb://localhost/directory'
 
 mongoose.connect(database, onDBConnect)
 server.on('request', router)
