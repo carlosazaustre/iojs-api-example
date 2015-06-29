@@ -1,6 +1,6 @@
 # IO.js API REST
 
-Building an API RESTfull written in ECMAScript6 on IO.js
+Building an API RESTful written in ECMAScript6 on IO.js
 
 ## Requeriments
 
