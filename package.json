@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/carlosazaustre/iojs-api-example#readme",
   "dependencies": {
+    "api-helpers": "^1.0.0",
     "body": "^5.1.0",
     "course": "0.0.1",
     "mongoose": "^4.0.6",
